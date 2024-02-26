@@ -13,9 +13,20 @@ const checkDB =async () => {
     } catch (error) {
      console.error('Unable to connect to the database:', error);
     }
-    }
+}
     
-    module.exports = {
-    connection,checkDB
+const syncModels = async() => {
+    try {
+      await  connection.sync()
+      console.log('models sync')
+    } catch (error) {
+        console.error('Error sync', error)
     }
+}
+
+module.exports = {
+    connection,
+    checkDB,
+    syncModels
+}
     

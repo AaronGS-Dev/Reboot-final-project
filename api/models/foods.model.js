@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const {connection} = require('../../database/db.index');
+const {connection} = require('../../database/index');
 
 const Food = connection.define('foods', {
  

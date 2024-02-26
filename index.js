@@ -1,8 +1,16 @@
 require('dotenv').config() 
 
 const {
-    checkDB
+    checkDB,
+    syncModels
     } = require('./database/index')
     
-    checkDB()
-    
+    const addRelations = require('./database/relations')
+
+
+ const start = async () => {
+    await checkDB()
+    addRelations()
+    syncModels()
+ }
+    start()
