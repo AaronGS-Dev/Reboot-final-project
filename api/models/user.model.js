@@ -31,6 +31,7 @@ const User = connection.define('users', {
     
   },
 
+
   direction: {
     type: DataTypes.STRING,
     allowNull: false
