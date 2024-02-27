@@ -25,6 +25,18 @@ const bcrypt = require('bcrypt')
     }
  }
 
+const getAllUsers= async(req,res) => {
+    const users = await User.findAll({
+        attributes: ['id','name']
+    })
+    res.status(200).json(
+        {
+            message: users,
+        }
+    )
+}
+
  module.exports = {
-    createUser
+    createUser,
+    getAllUsers
  }
