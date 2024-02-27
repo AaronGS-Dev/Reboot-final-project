@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const {connection} = require('../../database/index');
+const { connection } = require('../../database/index');
 
 const User = connection.define('users', {
  
@@ -11,7 +11,7 @@ const User = connection.define('users', {
  role: {
    type: DataTypes.ENUM('admin', 'user'),
    allowNull: false,
-   defaultValue: 'users'
+   defaultValue: 'user'
    
  },
 
