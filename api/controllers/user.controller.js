@@ -36,7 +36,55 @@ const getAllUsers= async(req,res) => {
     )
 }
 
+const getOneUser = async (req, res) => {
+    try {
+        const userId = req.params.id
+        const user = await User.findByPk(userId)
+        if (!user) {
+             res.status(404).json({ message: "User does not exist" })
+        }
+        res.status(200).json({ message: "User found", user: user })
+    } catch (error) {
+        res.status(400).json({ message: "Error", error: error.message })
+    }
+}
+const updateUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const updated = await User.update(req.body, {
+            where: { id: userId }
+        });
+        if (updated) {
+            const updatedUser = await User.findByPk(userId)
+            res.status(200).json({ message: "User correctly actualized", user: updatedUser })
+        }
+        throw new Error('User does not exist');
+    } catch (error) {
+        res.status(400).json({ message: "Error", error: error.message })
+    }
+}
+
+const deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const deleted = await User.destroy({
+            where: {id: userId}
+        });
+      
+        if (deleted) {
+            const deletedUser = await User.findByPk(userId)
+            res.status(200).json({ message: "User correctly deleted", user: deletedUser })
+        } else {
+            throw new Error('User does not exist')
+        }
+    } catch (error) {
+        res.status(400).json({ message: "Error", error: error.message })
+    }
+}
  module.exports = {
     createUser,
-    getAllUsers
+    getAllUsers,
+    getOneUser,
+    updateUser,
+    deleteUser
  }
