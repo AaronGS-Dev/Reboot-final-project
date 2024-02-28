@@ -4,7 +4,12 @@ const {
     createUser, getAllUsers
 } = require('../controllers/user.controller')
 
-router.post('/', createUser)
+const {
+    checkAuth,
+    checkAdmin
+} = require('../utils/middlewares')
+
+router.post('/', checkAuth, checkAdmin, createUser)
 router.get('/', getAllUsers)
 
 module.exports = router
