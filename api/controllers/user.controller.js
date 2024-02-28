@@ -1,6 +1,6 @@
 const User = require('../models/user.model')
+const Foods = require('../models/foods.model')
 const bcrypt = require('bcrypt')
-
  const createUser = async (req, res) => {
     try {
         const salt = bcrypt.genSaltSync(parseInt(process.env.SALT_ROUNDS))
@@ -81,10 +81,34 @@ const deleteUser = async (req, res) => {
         res.status(400).json({ message: "Error", error: error.message })
     }
 }
- module.exports = {
+/*const addFoodtoUser = async (req, res) => {
+    try {
+        const userId = req.params.userId
+        const foodId = req.params.foodId
+
+        const user = await User.findByPk(userId)
+        const food = await Food.findByPk(foodId)
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" })
+        }
+        if (!food) {
+            return res.status(404).json({ message: "Food not found" })
+        }
+
+        await user.addFood(food)
+
+        res.status(200).json({ message: "Food added to user successfully" })
+    } catch (error) {
+        res.status(500).json({ message: "Error adding food to user", error: error.message })
+    }
+}*/
+
+module.exports = {
     createUser,
     getAllUsers,
     getOneUser,
     updateUser,
-    deleteUser
- }
+    deleteUser,
+    addFoodtoUser
+};
