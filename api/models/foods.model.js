@@ -17,7 +17,7 @@ const Food = connection.define('foods', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-
+ 
   value: {
     type: DataTypes.INTEGER,
     allowNull: false
