@@ -22,12 +22,11 @@ const Foods = require('../models/foods.model')
  }
 
 const getAllFoods = async(req, res) => {
-    const foods = await Foods.findAll({
-        attributes: ['id', 'title', 'description']
-    })
+    const foods = await Foods.findAll()
     res.status(200).json(
         {
-            message: foods
+            message:'Here all foods',
+            result: foods
         }
     )
 }
