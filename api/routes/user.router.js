@@ -16,7 +16,7 @@ const {
 router.post('/', checkAuth, checkAdmin, createUser)
 router.get('/',  getAllUsers)
 router.get('/:id', getOneUser) 
-router.patch('/:id', updateUser)
+router.put('/:id', updateUser)
 router.delete('/:id', deleteUser)
 
 module.exports = router

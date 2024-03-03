@@ -12,17 +12,25 @@ const Food = connection.define('foods', {
     type: DataTypes.STRING,
     allowNull: false
   },
+ ingredients: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  image: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  diet: {
+      type: DataTypes.STRING,
+      allowNull: false
+  },
 
   price: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
  
-  value: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-
+  
   fat: {
     type: DataTypes.INTEGER,
     allowNull: false
