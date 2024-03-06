@@ -1,13 +1,24 @@
-const express = require('express');
-const router = express.Router();
+
+const listRouter = require('express').Router();
+
 const {
-    addToCart,
-    deleteProduct,
-    getCart
+    createList,
+    getAllLists,
+    getAllFood,
+    getListsByUser,
+    updateList,
+    deleteList,
+    addToList,
 } = require('../controllers/cart.controller');
+const { checkAuth, checkAdmin } = require('../utils/middlewares');
 
-router.get('/', getCart)
-router.post('/', addToCart);
-router.delete('/:id', deleteProduct)
+listRouter
+    .get('/food', getAllFood)
+    .get('/', getAllLists)
+    .get('/user/:userId', getListsByUser) 
+    .post('/', createList)
+    .put('/:id', updateList)
+    .put('/:userId/:foodId', addToList)
+    .delete('/:id', deleteList);
 
-module.exports = router;
+module.exports = listRouter;
