@@ -31,7 +31,8 @@ const getAllUsers= async(req,res) => {
     })
     res.status(200).json(
         {
-            message: users,
+            message: 'Here all users',
+            result: users
         }
     )
 }
@@ -56,7 +57,11 @@ const updateUser = async (req, res) => {
         });
         if (updated) {
             const updatedUser = await User.findByPk(userId)
-            res.status(200).json({ message: "User correctly actualized", user: updatedUser })
+            res.status(200).json(
+                { message: "User correctly actualized",
+                 user: updatedUser 
+                }
+                )
         }
         throw new Error('User does not exist');
     } catch (error) {

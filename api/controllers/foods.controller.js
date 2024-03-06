@@ -52,7 +52,12 @@ const updateFood = async(req, res) => {
         });
         if(updated) {
             const updatedFood = await Food.findByPk(foodId)
-            res.status(200).json({message: "Food correctly actualized", food:updatedFood})
+            res.status(200).json(
+                {
+                message: "Food correctly actualized",
+                 food:updatedFood
+                }
+                )
         }
         throw new Error('Food does not exist');
     } catch (error) {
